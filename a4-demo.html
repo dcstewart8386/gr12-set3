@@ -46,10 +46,9 @@
         if (length <= 0)
             return
 
-        let x = length * 6
-
         // Recursive case
-        var redLine = new Konva.Line({
+        let x = length * 6
+        let redLine = new Konva.Line({
             points: [x, 0, x, length],
             stroke: 'red',
             strokeWidth: 1,
