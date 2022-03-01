@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/konva@8.3.2/konva.min.js"></script>
+<script src="grid.js"></script>
+<title>Konva Program</title>
+</head>
+<body>
+<div id="konvaCanvas"></div>
+<script>
+	'use strict'
+
+    let stage = new Konva.Stage({
+        container: 'konvaCanvas',
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+    let layer = new Konva.Layer();
+	stage.add(layer); // add the layer to the stage
+
+    //----- Ignore everything above here for now -----//
+
+
+    function drawCircles(radius) {
+        
+        // Base case
+        if (radius <= 0)
+            return
+
+        // Recursive case
+        let circle = new Konva.Circle({
+            x: 200,
+            y: 200,
+            radius: radius,
+            stroke: "black"
+        })
+        layer.add(circle)
+        drawCircles(radius - 10)
+    }
+    drawCircles(100)
+
+
+    function drawLines(length) {
+
+        // Base case
+        if (length <= 0)
+            return
+
+        let x = length * 6
+
+        // Recursive case
+        var redLine = new Konva.Line({
+            points: [x, 0, x, length],
+            stroke: 'red',
+            strokeWidth: 1,
+        });
+        layer.add(redLine)
+        drawLines(length-1)
+    }
+    drawLines(100)
+
+
+    // Calculates the n'th term in a fibonacci sequence
+    function fib(n) {
+
+        // Base case #1
+        if (n == 1)
+            return 0
+
+        // Base case #2
+        if (n == 2)
+            return 1
+
+        // Recursive case
+        return fib(n-1) + fib(n-2)
+    }
+    console.log("Fibonacci term 10 is "+fib(10))
+
+    //----- Ignore everything below here for now -----//
+
+</script>
+</body>
+</html>
